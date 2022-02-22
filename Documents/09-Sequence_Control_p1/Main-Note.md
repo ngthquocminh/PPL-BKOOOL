@@ -1,7 +1,9 @@
 # SEQUENCE CONTROL
 
 ## Expressions
-
+### Operand Evaluation Order
+- C-program will calculate funcall expr first.
+### Expression Syntax
 - Syntax: Infix,Prefix,Postfix
 - Infix: (a + b) * (c - d)
 - Prefix Notation:
@@ -40,6 +42,35 @@
 
 - Two-way selection: If-statement (issue dangling else in C-lang).
 - Multiple-way selection: Switch-statement.
-- Loop
+- FOR Loopq: Couter-countrolled loop
+  -  Algol-based: 'last' value is stored in end_saved (which is hidden from outside)
+     -  [define end_save]
+     -  end_save := last
+     -  i = first
+     -  loop:
+     -  if i > end_save doto out
+     -  [loop body]
+     -  goto loop
+     -  out:
+     -  [undefine end_save]
+  ```pascal
+  for i:=first to last by step
+  do
+    (* loop body *)
+  end
+  ```
+    -  C-based
+       -  exp1
+       -  loop:
+       -  if exp2 = 0 (=false) goto out
+       -  [loop body]
+       -  exp3
+       -  goto loop
+       -  out:
+  ```c++
+  for (exp1,exp2,exp3)
+    // loop body
+  ```
 
+- While loop: Logically-countered loop
 ## Program Units

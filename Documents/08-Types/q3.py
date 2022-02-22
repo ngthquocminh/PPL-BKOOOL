@@ -20,6 +20,7 @@ op_rules = {
     'floor': (float,int),
 }
 
+a = dict()
 
 class Scope:
     def __init__(self):
