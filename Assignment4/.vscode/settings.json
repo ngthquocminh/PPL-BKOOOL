@@ -4,7 +4,9 @@
         "./src/test",
         "./target",
         "./src/main/bkool/astgen",
-        "./src/main/bkool/parser"
+        "./src/main/bkool/parser",
+        "./src/main/bkool/codegen",
+        "./src/main/bkool/checker"
     ],
     "cSpell.words": [
         "mtype",
