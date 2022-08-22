@@ -409,7 +409,7 @@ class CodeGenVisitor(BaseVisitor):
         self.emit.printout(
             self.emit.emitMETHOD(methodName, mtype, isStatic, frame))
 
-        frame.enterScope(True)
+        frame.enterScope(True) # reset lable =0
         glenv = access.sym
 
         # Generate code for parameter declarations
@@ -590,9 +590,8 @@ class CodeGenVisitor(BaseVisitor):
         frame = o.frame
         
         lexeme = "{}/<init>".format(ast.classname.name)
-        
-        code = self.emit.emitNEW(ast.classname.name)
         frame.push()
+        code = self.emit.emitNEW(ast.classname.name)
         code += self.emit.emitDUP(frame)
         code += self.emit.emitINVOKESPECIAL(frame,lexeme,MType([],VoidType()))
         return code, ClassType(ast.classname)
