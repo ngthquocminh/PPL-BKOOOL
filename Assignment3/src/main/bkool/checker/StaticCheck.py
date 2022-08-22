@@ -19,20 +19,25 @@ class Utils:
         return None
 
 
-
 class MType:
     def __init__(self,partype:List[Type],rettype:Type):
         self.partype = partype
         self.rettype = rettype
 
-class Symbol:
+class SymbolVar:
     def __init__(self,name:str,mtype:MType,kind:Kind,static=False,value=None):
         self.name = name
         self.mtype = mtype
         self.kind = kind
         self.value = value
         self.static = static
-
+"""
+class B {}
+class A {
+    int a = 1;
+    int foo(int,string) { B b new B(); }
+}
+"""
 class Scope:
     def __init__(self,ctx,scope):
         self.ctx:AST = ctx
@@ -60,7 +65,7 @@ class Tool:
             sym = listSym[i]
             if Tool.lookup(sym.name,scope.env + listSym[0:i],lambda n:n.name):
                 raise Redeclared(sym.kind,sym.name)
-            
+
 
 class StaticChecker(BaseVisitor):
 
